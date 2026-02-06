@@ -3,10 +3,18 @@ body{
     min-height:100vh;
     display:flex;
     flex-direction:column;
-    background:linear-gradient(45deg,#ff758c,#ff7eb3);
+    justify-content:flex-start;
+    background:linear-gradient(
+        135deg,
+        #ff758c,
+        #ff7eb3,
+        #ffd1dc
+    );
     font-family:Arial;
-    overflow:hidden;
+    overflow-x:hidden;
+    background-attachment:fixed;
 }
+
 /* 🌸 CONTENEDOR PETALOS */
 .petalos{
     position:fixed;
@@ -25,12 +33,11 @@ body{
     width:18px;
     height:26px;
 
-    /* 🌻 COLORES GIRASOL */
     background:linear-gradient(
         145deg,
-        #fff176,   /* amarillo claro */
-        #fdd835,   /* amarillo girasol */
-        #f9a825    /* amarillo-naranja cálido */
+        #fff176,
+        #fdd835,
+        #f9a825
     );
 
     border-radius:60% 60% 60% 60% / 80% 80% 40% 40%;
@@ -45,7 +52,7 @@ body{
     animation:caer linear infinite;
 }
 
-/* 🌸 ANIMACION CAIDA NATURAL */
+/* 🌸 ANIMACION CAIDA */
 @keyframes caer{
     0%{
         transform:translateY(-10vh) rotate(0deg) translateX(0px);
@@ -66,7 +73,6 @@ body{
     }
 }
 
-
 /* HEADER */
 .header{
     text-align:center;
@@ -74,6 +80,23 @@ body{
     color:white;
     position:relative;
     z-index:2;
+    animation: aparecer 2s ease;
+}
+
+.header h1{
+    text-shadow:0 0 12px rgba(255,255,255,.4);
+}
+
+/* Animación entrada */
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /* CONTENEDOR CENTRAL */
@@ -81,6 +104,7 @@ body{
     flex:1;
     perspective:1400px;
     width:100%;
+    min-height:60vh;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -128,6 +152,10 @@ body{
     cursor:pointer;
 }
 
+.tarjeta:hover{
+    transform:scale(1.05);
+}
+
 .tarjeta.voltear{
     transform: rotateY(180deg);
 }
@@ -140,6 +168,7 @@ body{
     border-radius:15px;
     overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
 }
 
 .frente img{
@@ -159,12 +188,54 @@ body{
     font-size:clamp(14px,2vw,18px);
 }
 
-/* 📱 Mobile */
+/* 📱 MOBILE OPTIMIZADO */
 @media (max-width:600px){
+
+    body{
+        justify-content:center;
+    }
+
+    /* Header más compacto */
+    .header{
+        padding:12px 15px;
+    }
+
+    .header h1{
+        font-size:22px;
+        line-height:1.2;
+    }
+
+    .header p{
+        font-size:14px;
+        line-height:1.4;
+    }
+
+    /* Escena centrada real */
+    .escena{
+        min-height:50vh;
+        align-items:center;
+        transform:translateY(-30px);
+    }
+
+    /* Carrusel mejor tamaño móvil */
+    .carrusel{
+        width:75vw;
+        height:75vw;
+        max-width:none;
+        max-height:none;
+    }
+
+    /* Items ajuste */
     .item{
         width:55%;
         height:70%;
         left:22%;
         top:15%;
+    }
+
+    /* Footer compacto */
+    .footer{
+        font-size:12px;
+        padding:10px;
     }
 }
