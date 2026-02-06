@@ -2,9 +2,17 @@ const carrusel = document.getElementById("carrusel");
 const items = document.querySelectorAll(".item");
 const tarjetas = document.querySelectorAll(".tarjeta");
 
+/* 🔥 RADIO RESPONSIVE REAL */
+let radio;
+
+if(window.innerWidth < 600){
+    radio = window.innerWidth * 0.35;
+}else{
+    radio = 280;
+}
+
 const total = items.length;
 const angulo = 360 / total;
-const radio = 280;
 
 /* Posicionar círculo */
 items.forEach((item, i) => {
@@ -68,7 +76,7 @@ tarjetas.forEach(t=>{
     });
 });
 
-/* 🌸 PETALOS REALISTAS DINAMICOS */
+/* 🌸 PETALOS */
 const contenedorPetalos = document.querySelector(".petalos");
 
 for(let i=0;i<35;i++){
@@ -79,7 +87,6 @@ for(let i=0;i<35;i++){
     petalo.style.animationDuration = (8 + Math.random()*8) + "s";
     petalo.style.animationDelay = Math.random()*5 + "s";
 
-    // Tamaño variable
     let size = 0.7 + Math.random()*0.8;
     petalo.style.transform = "scale(" + size + ")";
 
