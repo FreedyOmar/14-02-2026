@@ -27,7 +27,7 @@ body{
     z-index:0;
 }
 
-/* 🌸 PETALOS REALISTAS */
+/* 🌸 PETALOS */
 .petalos span{
     position:absolute;
     width:18px;
@@ -52,21 +52,18 @@ body{
     animation:caer linear infinite;
 }
 
-/* 🌸 ANIMACION CAIDA */
+/* Animación caída */
 @keyframes caer{
     0%{
         transform:translateY(-10vh) rotate(0deg) translateX(0px);
         opacity:0;
     }
-
     10%{
         opacity:.9;
     }
-
     50%{
         transform:translateY(50vh) rotate(180deg) translateX(30px);
     }
-
     100%{
         transform:translateY(110vh) rotate(360deg) translateX(-30px);
         opacity:0;
@@ -87,7 +84,6 @@ body{
     text-shadow:0 0 12px rgba(255,255,255,.4);
 }
 
-/* Animación entrada */
 @keyframes aparecer{
     from{
         opacity:0;
@@ -99,7 +95,7 @@ body{
     }
 }
 
-/* CONTENEDOR CENTRAL */
+/* ESCENA */
 .escena{
     flex:1;
     perspective:1400px;
@@ -147,95 +143,5 @@ body{
     width:100%;
     height:100%;
     position:relative;
-    transform-style:preserve-3d;
-    transition: transform .8s;
-    cursor:pointer;
-}
+    transform-style:preserve
 
-.tarjeta:hover{
-    transform:scale(1.05);
-}
-
-.tarjeta.voltear{
-    transform: rotateY(180deg);
-}
-
-.cara{
-    position:absolute;
-    width:100%;
-    height:100%;
-    backface-visibility:hidden;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.4);
-    backdrop-filter: blur(2px);
-}
-
-.frente img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.atras{
-    background:white;
-    transform: rotateY(180deg);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:15px;
-    text-align:center;
-    font-size:clamp(14px,2vw,18px);
-}
-
-/* 📱 MOBILE OPTIMIZADO */
-@media (max-width:600px){
-
-    body{
-        justify-content:center;
-    }
-
-    /* Header más compacto */
-    .header{
-        padding:12px 15px;
-    }
-
-    .header h1{
-        font-size:22px;
-        line-height:1.2;
-    }
-
-    .header p{
-        font-size:14px;
-        line-height:1.4;
-    }
-
-    /* Escena centrada real */
-    .escena{
-        min-height:50vh;
-        align-items:center;
-        transform:translateY(-30px);
-    }
-
-    /* Carrusel mejor tamaño móvil */
-    .carrusel{
-        width:75vw;
-        height:75vw;
-        max-width:none;
-        max-height:none;
-    }
-
-    /* Items ajuste */
-    .item{
-        width:55%;
-        height:70%;
-        left:22%;
-        top:15%;
-    }
-
-    /* Footer compacto */
-    .footer{
-        font-size:12px;
-        padding:10px;
-    }
-}
