@@ -1,92 +1,3 @@
-body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    background:linear-gradient(45deg,#ff758c,#ff7eb3);
-    font-family:Arial;
-    overflow:hidden;
-}
-/* 🌸 CONTENEDOR PETALOS */
-.petalos{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:0;
-}
-
-/* 🌸 PETALOS REALISTAS */
-.petalos span{
-    position:absolute;
-    width:18px;
-    height:26px;
-
-    /* 🌻 COLORES GIRASOL */
-    background:linear-gradient(
-        145deg,
-        #fff176,   /* amarillo claro */
-        #fdd835,   /* amarillo girasol */
-        #f9a825    /* amarillo-naranja cálido */
-    );
-
-    border-radius:60% 60% 60% 60% / 80% 80% 40% 40%;
-    opacity:.9;
-    filter:blur(.2px);
-
-    box-shadow:
-        inset -2px -2px 4px rgba(255,255,255,.5),
-        inset 2px 2px 6px rgba(180,120,0,.5),
-        0 4px 8px rgba(0,0,0,.15);
-
-    animation:caer linear infinite;
-}
-
-/* 🌸 ANIMACION CAIDA NATURAL */
-@keyframes caer{
-    0%{
-        transform:translateY(-10vh) rotate(0deg) translateX(0px);
-        opacity:0;
-    }
-
-    10%{
-        opacity:.9;
-    }
-
-    50%{
-        transform:translateY(50vh) rotate(180deg) translateX(30px);
-    }
-
-    100%{
-        transform:translateY(110vh) rotate(360deg) translateX(-30px);
-        opacity:0;
-    }
-}
-
-
-/* HEADER */
-.header{
-    text-align:center;
-    padding:20px 10px;
-    color:white;
-    position:relative;
-    z-index:2;
-}
-
-/* CONTENEDOR CENTRAL */
-.escena{
-    flex:1;
-    perspective:1400px;
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-    z-index:2;
-}
 
 /* FOOTER */
 .footer{
@@ -97,6 +8,24 @@ body{
     opacity:.9;
     position:relative;
     z-index:2;
+}
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(45deg,#ff758c,#ff7eb3);
+    font-family:Arial;
+    overflow:hidden;
+}
+
+.escena{
+    perspective:1400px;
+    width:100%;
+    display:flex;
+    justify-content:center;
 }
 
 /* Carrusel */
@@ -118,7 +47,7 @@ body{
     top:15%;
 }
 
-/* Tarjeta */
+/* Tarjeta flip */
 .tarjeta{
     width:100%;
     height:100%;
@@ -159,12 +88,14 @@ body{
     font-size:clamp(14px,2vw,18px);
 }
 
-/* 📱 Mobile */
+/* 📱 Ajustes móviles */
 @media (max-width:600px){
+
     .item{
         width:55%;
         height:70%;
         left:22%;
         top:15%;
     }
+
 }
