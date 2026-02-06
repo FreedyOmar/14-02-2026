@@ -85,3 +85,4 @@ for(let i=0;i<35;i++){
 
     contenedorPetalos.appendChild(petalo);
 }
+
