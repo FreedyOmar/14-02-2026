@@ -4,9 +4,12 @@ body{
     display:flex;
     flex-direction:column;
     background:linear-gradient(45deg,#ff758c,#ff7eb3);
-    font-family:Arial;
-    overflow:hidden;
+    font-family:Arial, sans-serif;
+
+    /* ✅ Evita scroll lateral */
+    overflow-x:hidden;
 }
+
 /* 🌸 CONTENEDOR PETALOS */
 .petalos{
     position:fixed;
@@ -25,12 +28,11 @@ body{
     width:18px;
     height:26px;
 
-    /* 🌻 COLORES GIRASOL */
     background:linear-gradient(
         145deg,
-        #fff176,   /* amarillo claro */
-        #fdd835,   /* amarillo girasol */
-        #f9a825    /* amarillo-naranja cálido */
+        #fff176,
+        #fdd835,
+        #f9a825
     );
 
     border-radius:60% 60% 60% 60% / 80% 80% 40% 40%;
@@ -51,29 +53,33 @@ body{
         transform:translateY(-10vh) rotate(0deg) translateX(0px);
         opacity:0;
     }
-
-    10%{
-        opacity:.9;
-    }
-
+    10%{ opacity:.9; }
     50%{
         transform:translateY(50vh) rotate(180deg) translateX(30px);
     }
-
     100%{
         transform:translateY(110vh) rotate(360deg) translateX(-30px);
         opacity:0;
     }
 }
 
-
 /* HEADER */
 .header{
     text-align:center;
-    padding:20px 10px;
+    padding:clamp(15px,3vw,30px) 10px;
     color:white;
     position:relative;
     z-index:2;
+}
+
+.header h1{
+    font-size:clamp(1.4rem,3vw,2.5rem);
+}
+
+.header p{
+    font-size:clamp(14px,2vw,18px);
+    max-width:800px;
+    margin:auto;
 }
 
 /* CONTENEDOR CENTRAL */
@@ -86,26 +92,30 @@ body{
     align-items:center;
     position:relative;
     z-index:2;
+    padding:20px 0;
 }
 
 /* FOOTER */
 .footer{
     text-align:center;
-    padding:15px;
+    padding:clamp(10px,2vw,20px);
     color:white;
-    font-size:14px;
+    font-size:clamp(12px,2vw,15px);
     opacity:.9;
     position:relative;
     z-index:2;
 }
 
-/* Carrusel */
+/* ===================== */
+/* 🎡 CARRUSEL */
+/* ===================== */
+
 .carrusel{
     position:relative;
     width:90vw;
-    max-width:420px;
-    height:70vw;
-    max-height:420px;
+    max-width:480px;
+    height:90vw;
+    max-height:480px;
     transform-style:preserve-3d;
 }
 
@@ -116,6 +126,7 @@ body{
     height:65%;
     left:27%;
     top:15%;
+    transition:transform .4s ease;
 }
 
 /* Tarjeta */
@@ -128,6 +139,13 @@ body{
     cursor:pointer;
 }
 
+/* Hover solo en PC */
+@media (hover:hover){
+    .tarjeta:hover{
+        transform:scale(1.03);
+    }
+}
+
 .tarjeta.voltear{
     transform: rotateY(180deg);
 }
@@ -137,7 +155,7 @@ body{
     width:100%;
     height:100%;
     backface-visibility:hidden;
-    border-radius:15px;
+    border-radius:18px;
     overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
@@ -154,17 +172,72 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:15px;
+    padding:clamp(12px,2vw,20px);
     text-align:center;
     font-size:clamp(14px,2vw,18px);
+    line-height:1.4;
 }
 
-/* 📱 Mobile */
-@media (max-width:600px){
+/* ===================== */
+/* 📱 TABLET */
+/* ===================== */
+@media (max-width:900px){
+
+    .carrusel{
+        width:85vw;
+        height:85vw;
+    }
+
     .item{
-        width:55%;
+        width:50%;
         height:70%;
-        left:22%;
-        top:15%;
+        left:25%;
+    }
+}
+
+/* ===================== */
+/* 📱 MOBILE GRANDE */
+/* ===================== */
+@media (max-width:600px){
+
+    .carrusel{
+        width:92vw;
+        height:92vw;
+    }
+
+    .item{
+        width:60%;
+        height:72%;
+        left:20%;
+        top:14%;
+    }
+
+    .cara{
+        border-radius:14px;
+    }
+}
+
+/* ===================== */
+/* 📱 MOBILE PEQUEÑO */
+/* ===================== */
+@media (max-width:400px){
+
+    .header h1{
+        font-size:1.2rem;
+    }
+
+    .header p{
+        font-size:13px;
+    }
+
+    .item{
+        width:70%;
+        height:75%;
+        left:15%;
+    }
+
+    .atras{
+        font-size:13px;
+        padding:10px;
     }
 }
