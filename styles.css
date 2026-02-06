@@ -1,13 +1,14 @@
 body{
     margin:0;
-    min-height:100vh;
+    min-height:100dvh;
     display:flex;
     flex-direction:column;
     background:linear-gradient(45deg,#ff758c,#ff7eb3);
     font-family:Arial, sans-serif;
 
-    /* ✅ Evita scroll lateral */
+    /* ✅ Scroll correcto */
     overflow-x:hidden;
+    overflow-y:auto;
 }
 
 /* 🌸 CONTENEDOR PETALOS */
@@ -22,7 +23,7 @@ body{
     z-index:0;
 }
 
-/* 🌸 PETALOS REALISTAS */
+/* 🌸 PETALOS */
 .petalos span{
     position:absolute;
     width:18px;
@@ -47,7 +48,7 @@ body{
     animation:caer linear infinite;
 }
 
-/* 🌸 ANIMACION CAIDA NATURAL */
+/* 🌸 ANIMACION */
 @keyframes caer{
     0%{
         transform:translateY(-10vh) rotate(0deg) translateX(0px);
@@ -82,7 +83,7 @@ body{
     margin:auto;
 }
 
-/* CONTENEDOR CENTRAL */
+/* ESCENA */
 .escena{
     flex:1;
     perspective:1400px;
@@ -106,10 +107,7 @@ body{
     z-index:2;
 }
 
-/* ===================== */
 /* 🎡 CARRUSEL */
-/* ===================== */
-
 .carrusel{
     position:relative;
     width:90vw;
@@ -119,7 +117,7 @@ body{
     transform-style:preserve-3d;
 }
 
-/* Items */
+/* ITEMS */
 .item{
     position:absolute;
     width:45%;
@@ -129,7 +127,7 @@ body{
     transition:transform .4s ease;
 }
 
-/* Tarjeta */
+/* TARJETA */
 .tarjeta{
     width:100%;
     height:100%;
@@ -137,13 +135,6 @@ body{
     transform-style:preserve-3d;
     transition: transform .8s;
     cursor:pointer;
-}
-
-/* Hover solo en PC */
-@media (hover:hover){
-    .tarjeta:hover{
-        transform:scale(1.03);
-    }
 }
 
 .tarjeta.voltear{
@@ -196,20 +187,32 @@ body{
 }
 
 /* ===================== */
-/* 📱 MOBILE GRANDE */
+/* 📱 MOBILE */
 /* ===================== */
 @media (max-width:600px){
 
+    body{
+        min-height:100dvh;
+    }
+
+    /* 👇 NO centrar vertical en móvil */
+    .escena{
+        align-items:flex-start;
+        padding-top:20px;
+    }
+
+    /* 👇 Altura realista para celulares */
     .carrusel{
         width:92vw;
-        height:92vw;
+        height:420px;
+        max-height:75vh;
     }
 
     .item{
-        width:60%;
-        height:72%;
-        left:20%;
-        top:14%;
+        width:65%;
+        height:70%;
+        left:17%;
+        top:15%;
     }
 
     .cara{
