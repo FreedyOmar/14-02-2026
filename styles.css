@@ -3,18 +3,10 @@ body{
     min-height:100vh;
     display:flex;
     flex-direction:column;
-    justify-content:flex-start;
-    background:linear-gradient(
-        135deg,
-        #ff758c,
-        #ff7eb3,
-        #ffd1dc
-    );
+    background:linear-gradient(45deg,#ff758c,#ff7eb3);
     font-family:Arial;
-    overflow-x:hidden;
-    background-attachment:fixed;
+    overflow:hidden;
 }
-
 /* 🌸 CONTENEDOR PETALOS */
 .petalos{
     position:fixed;
@@ -27,17 +19,18 @@ body{
     z-index:0;
 }
 
-/* 🌸 PETALOS */
+/* 🌸 PETALOS REALISTAS */
 .petalos span{
     position:absolute;
     width:18px;
     height:26px;
 
+    /* 🌻 COLORES GIRASOL */
     background:linear-gradient(
         145deg,
-        #fff176,
-        #fdd835,
-        #f9a825
+        #fff176,   /* amarillo claro */
+        #fdd835,   /* amarillo girasol */
+        #f9a825    /* amarillo-naranja cálido */
     );
 
     border-radius:60% 60% 60% 60% / 80% 80% 40% 40%;
@@ -52,23 +45,27 @@ body{
     animation:caer linear infinite;
 }
 
-/* Animación caída */
+/* 🌸 ANIMACION CAIDA NATURAL */
 @keyframes caer{
     0%{
         transform:translateY(-10vh) rotate(0deg) translateX(0px);
         opacity:0;
     }
+
     10%{
         opacity:.9;
     }
+
     50%{
         transform:translateY(50vh) rotate(180deg) translateX(30px);
     }
+
     100%{
         transform:translateY(110vh) rotate(360deg) translateX(-30px);
         opacity:0;
     }
 }
+
 
 /* HEADER */
 .header{
@@ -77,30 +74,13 @@ body{
     color:white;
     position:relative;
     z-index:2;
-    animation: aparecer 2s ease;
 }
 
-.header h1{
-    text-shadow:0 0 12px rgba(255,255,255,.4);
-}
-
-@keyframes aparecer{
-    from{
-        opacity:0;
-        transform:translateY(-30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* ESCENA */
+/* CONTENEDOR CENTRAL */
 .escena{
     flex:1;
     perspective:1400px;
     width:100%;
-    min-height:60vh;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -143,5 +123,48 @@ body{
     width:100%;
     height:100%;
     position:relative;
-    transform-style:preserve
+    transform-style:preserve-3d;
+    transition: transform .8s;
+    cursor:pointer;
+}
 
+.tarjeta.voltear{
+    transform: rotateY(180deg);
+}
+
+.cara{
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.frente img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.atras{
+    background:white;
+    transform: rotateY(180deg);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:15px;
+    text-align:center;
+    font-size:clamp(14px,2vw,18px);
+}
+
+/* 📱 Mobile */
+@media (max-width:600px){
+    .item{
+        width:55%;
+        height:70%;
+        left:22%;
+        top:15%;
+    }
+}
