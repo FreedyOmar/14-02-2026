@@ -17,6 +17,15 @@ let rotacion = 0;
 let arrastrando = false;
 let inicioX = 0;
 
+/* 🔄 Giro automático (LENTO) */
+setInterval(() => {
+    if (!arrastrando) {
+        rotacion += 0.2; // velocidad (puedes bajarlo a 0.1 si lo quieres más lento)
+        carrusel.style.transform = `rotateY(${rotacion}deg)`;
+    }
+}, 30);
+
+/* Mouse */
 carrusel.addEventListener("mousedown", e=>{
     arrastrando = true;
     inicioX = e.clientX;
@@ -72,17 +81,14 @@ tarjetas.forEach(t=>{
 const contenedorPetalos = document.querySelector(".petalos");
 
 for(let i=0;i<35;i++){
-
     let petalo = document.createElement("span");
 
     petalo.style.left = Math.random()*100 + "vw";
     petalo.style.animationDuration = (8 + Math.random()*8) + "s";
     petalo.style.animationDelay = Math.random()*5 + "s";
 
-    // Tamaño variable
     let size = 0.7 + Math.random()*0.8;
     petalo.style.transform = "scale(" + size + ")";
 
     contenedorPetalos.appendChild(petalo);
 }
-
